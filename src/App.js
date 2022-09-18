@@ -1,26 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
-
-require('dotenv').config()
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import SimplePlaidLink from './components/plaid/SimplePlaidLink.tsx';
+import Dashboard from './components/dashboard/Dashboard.tsx';
+import CreateCardholder from './components/cardholder/CreateCardholder.tsx';
+import NotFound from './components/NotFound.tsx';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/link-bank" element={<SimplePlaidLink />} />
+        <Route exact path="/create-cardholder" element={<CreateCardholder />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router >
+
   );
 }
 

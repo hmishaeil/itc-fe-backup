@@ -27,7 +27,7 @@ const SimplePlaidLink = () => {
         // public token and account id
         console.log(publicToken, metadata);
 
-        const exchangePublicToken = async (metadata) => {
+        const exchangePublicToken = async (metadata: any) => {
             await fetch(beUrl + "/p/exchange-public-token?token=" + publicToken + "&id=" + metadata.account.id, { method: 'POST' });
         };
         exchangePublicToken(metadata);
